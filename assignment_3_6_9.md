@@ -76,13 +76,52 @@ console.log(arr);
 * The Output is ["I", "love", "going", "walkies"]
 ### b. 2nd one will assign the elements of the resultant array into 4 variables (in a single statement).
 #### Answer:
-```const [w1, w2, w3, w4] = "I love going walkies".split(" ");
+```
+const [w1, w2, w3, w4] = "I love going walkies".split(" ");
 
 console.log(w1);  // Output: "I"
 console.log(w2);  // Output: "love"
 console.log(w3);  // Output: "going"
 console.log(w4);  // Output: "walkies"
 ```
+### Given object for Questions 4, 5 (and possibly 6)
+```
+const myObject = {
+x1: "Samba",
+x2: {
+x3: {
+x4: {},
+x5: "Rails",
+},
+x6: {
+x7: -1,
+x8: [25, 8, 4, 10]
+},
+}
+};
+```
+### 4. For the given object, write a single line destructuring assignment to get these values:
+### a. x3 (store result in variable name y)
+#### Answer:
+```
+const { x2: { x3: y } } = myObject;
+console.log(y);  
+```
+* The output is { x4: {}, x5: "Rails" }
+### b. 2nd element of x8 (use any variable name for result)
+#### Answer:
+```
+const { x2: { x6: { x8: [, secondValue] } } } = myObject;
+console.log(secondValue);
+```
+* The output is 8
+### 5. Write JS code to create another object (named newObject), which contains all attributes from the given objects, and the following key value pairs:
+### a. Key: x20 Value: “Shinko”
+#### Answer:
+### b. Key: x21 Value: [5, 40, 73, 19]
+#### Answer:
+
+
 
 
 
