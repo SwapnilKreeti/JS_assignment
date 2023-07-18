@@ -259,7 +259,20 @@ f1(aRandomNum);
 * The third function call f1(aRandomNum):
 * Input: aRandomNum (updated value) = 111
 * Output: 333 (result of 111 * 3)
+### 8. In case of arrow functions, in which case the parenthesis for function parameters can be omitted? Give an example.
+#### Answer:
+* In the case of arrow functions, the parentheses for function parameters can be omitted when there is only a single parameter.
+```
+const sayName = name => {
+  console.log(`My name is, ${name}!`);
+};
 
+sayName("Swapnil");  
+```
+* The output is My name is Swapnil.
+### 9. Can arrow functions be used as object methods? Why or why not?
+#### Answer:
+* 
 
 
 
