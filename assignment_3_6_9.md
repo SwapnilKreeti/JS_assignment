@@ -118,9 +118,88 @@ console.log(secondValue);
 ### 5. Write JS code to create another object (named newObject), which contains all attributes from the given objects, and the following key value pairs:
 ### a. Key: x20 Value: “Shinko”
 #### Answer:
+```
+const myObject = {
+  x1: "Samba",
+  x2: {
+    x3: {
+      x4: {},
+      x5: "Rails",
+    },
+    x6: {
+      x7: -1,
+      x8: [25, 8, 4, 10]
+    },
+  },
+};
+
+const newObject = {
+  ...myObject, // the spread operator ... is used to create a new object newObject by spreading all the attributes from myObject into it
+  x20: "Shinko"
+};
+
+console.log(newObject);
+```
+* OUTPUT
+```
+{
+  x1: "Samba",
+  x2: {
+    x3: {
+      x4: {},
+      x5: "Rails"
+    },
+    x6: {
+      x7: -1,
+      x8: [25, 8, 4, 10]
+    }
+  },
+  x20: "Shinko"
+}
+```
 ### b. Key: x21 Value: [5, 40, 73, 19]
 #### Answer:
+```
+const myObject = {
+  x1: "Samba",
+  x2: {
+    x3: {
+      x4: {},
+      x5: "Rails",
+    },
+    x6: {
+      x7: -1,
+      x8: [25, 8, 4, 10]
+    },
+  },
+};
 
+const newObject = {
+  ...myObject,
+  x20: "Shinko",
+  x21: [5, 40, 73, 19]
+};
+
+console.log(newObject);
+```
+* OUTPUT
+```
+{
+  x1: "Samba",
+  x2: {
+    x3: {
+      x4: {},
+      x5: "Rails"
+    },
+    x6: {
+      x7: -1,
+      x8: [25, 8, 4, 10]
+    }
+  },
+  x20: "Shinko",
+  x21: [5, 40, 73, 19]
+}
+```
 
 
 
