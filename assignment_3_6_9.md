@@ -200,6 +200,66 @@ console.log(newObject);
   x21: [5, 40, 73, 19]
 }
 ```
+### 6. Create a new array newArray , which combines elements from arrays stored inside attributes x8 and x21 of the object created in Q5.
+#### Answer:
+```
+const myobject = {
+  x1: "Samba",
+  x2: {
+    x3: {
+      x4: {},
+      x5: "Rails"
+    },
+    x6: {
+      x7: -1,
+      x8: [25, 8, 4, 10]
+    }
+  },
+  x20: "Shinko",
+  x21: [5, 40, 73, 19]
+};
+
+const arr = [...myobject.x2.x6.x8, ...myobject.x21];
+
+console.log(arr);
+```
+* The output is [25, 8, 4, 10, 5, 40, 73, 19].
+### 7. For the given JS program:
+```
+let aRandomNum = 37;
+function f1(num) {
+console.log(num * 3);
+}
+function f2() {
+aRandomNum *= 3;
+console.log(aRandomNum);
+}
+f1(aRandomNum);
+f2();
+f1(aRandomNum);
+```
+### a. Out of the 2 functions f1 and f2, which one is pure and which one is impure? Give reasons for the conclusion.
+#### Answer:
+* Pure function (f1):The f1 function takes a parameter num and performs a computation by multiplying num by 3. The output of f1 solely depends on its input, making it deterministic and predictable.
+* Impure function (f2): The f2 function does not take any parameters.The output of f2 depends not only on its input (which is none), but also on the current state of aRandomNum.
+### b. What will be the output of the program (the 3 output values)?
+#### Answer:
+```
+111 
+111
+333
+```
+* The first function call f1(aRandomNum):
+* Input: aRandomNum = 37
+* Output: 111 (result of 37 * 3)
+* The second function call f2():
+* Modifies the global variable aRandomNum by multiplying it by 3.
+* Previous value of aRandomNum (which is 37) is multiplied by 3 to become 111.
+* Output: 111 (updated value of aRandomNum)
+* The third function call f1(aRandomNum):
+* Input: aRandomNum (updated value) = 111
+* Output: 333 (result of 111 * 3)
+
 
 
 
