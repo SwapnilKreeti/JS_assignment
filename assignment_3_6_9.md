@@ -272,7 +272,12 @@ sayName("Swapnil");
 * The output is My name is Swapnil.
 ### 9. Can arrow functions be used as object methods? Why or why not?
 #### Answer:
-* 
+* Yes, arrow functions can be used as object methods, but there are some important things to consider.
+*  Arrow functions have a different behavior for the this keyword compared to regular functions.
+*  Instead of having their own this value, they inherit the this value from the surrounding scope.
+*  This means that when using arrow functions as object methods, the this value will not refer to the object itself but rather to the this value of the outer scope.
+*   This can result in the this value being undefined or the global object, depending on the context.
+*    It is generally recommended to use regular functions as object methods if you need to access the object's properties or methods and maintain the correct this context.
 
 
 
