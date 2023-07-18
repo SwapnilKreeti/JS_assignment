@@ -37,4 +37,32 @@ console.log(arr2);
 ```
 ### 4. Given an array [{ id: 2100, name: 'President Jacqueline' }, { id: 2114, name:'Vice-president James' }, { id: 3016, name: 'House-captain Otis' }, { id:4818, name: 'Prefect Finneas' }]. Create an array containing just the id ofevery individual. (write two solution one using iterator and another using built-in method)
 #### Answer:
+* Using Iterator:
+```
+const arr1 = [
+  { id: 2100, name: 'President Jacqueline' },
+  { id: 2114, name: 'Vice-president James' },
+  { id: 3016, name: 'House-captain Otis' },
+  { id: 4818, name: 'Prefect Finneas' }
+];
+
+const arr2 = [];
+for (let i = 0; i < arr1.length; i++) {
+  arr2.push(arr1[i].id);
+}
+
+console.log(arr2);
+```
+* Using built-in method
+```
+const arr1 = [
+  { id: 2100, name: 'President Jacqueline' },
+  { id: 2114, name: 'Vice-president James' },
+  { id: 3016, name: 'House-captain Otis' },
+  { id: 4818, name: 'Prefect Finneas' }
+];
+
+const arr2 = arr1.map(i => i.id);
+
+console.log(arr2);
 ```
