@@ -41,4 +41,17 @@ console.log(product);
 ```
 ### 4. Write a function called multiplyBy that takes a number as input and returns a new function that multiplies any number passed into it by the original number.
 #### Answer:
+```
+function multiplier(numb1) {
+  return function(numb2) {
+    return numb1 * numb2;
+  };
+
+const multiplyByTwo = multiplier(2);
+console.log(multiplyByTwo(10));
+```
+### 5. Write a function named sortArray that takes in two parameters: 1. An array of numbers 2. A boolean value ascending that indicates whether the array should be sorted in ascending or descending order.The sortArray function should return the sorted array. Use an anonymous function to do the actual sorting, rather than using the built-in sort method.
+
+
+
 
