@@ -53,4 +53,33 @@ customPromise
     console.log('Promise rejected with error:', error.message);
   });
 ```
+### 4. Write a JS promise which resolves after 5s, with a value of “Hello Javascript”. Also, write code to print the length of this string after resolving.
+#### Answer:
+```
+const customPromise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("Hello Javascript");
+  }, 5000); 
+});
+
+customPromise
+  .then((value) => {
+    console.log("Resolved value:", value);
+    console.log("Resolved string's length:", value.length);
+  })
+  .catch((error) => {
+    console.error("Promise rejected with error:", error);
+  });
+```
+### 5. What is ‘callback hell’ problem? How does the use of promises help in reducing this?
+#### Answer:
+* Callback hell, also known as the "pyramid of doom," refers to the problem of dealing with multiple nested callbacks in asynchronous JavaScript code. It occurs when callbacks are deeply nested, leading to complex and unreadable code. Promises help alleviate this problem by offering a more structured and manageable approach to asynchronous code.
+* Promises improve code readability by allowing the chaining of asynchronous operations using the then() method, reducing excessive indentation and creating a more linear and understandable code structure. They enable sequential execution of tasks by ensuring that subsequent tasks wait for the previous ones to complete successfully, eliminating the need for deeply nested callbacks.
+* Promises also provide dedicated error handling through the catch() method, simplifying error management by centralizing error handling code. Additionally, promise composition methods such as Promise.all() and Promise.race() offer powerful ways to work with multiple promises concurrently or select the first resolved promise.
+* Furthermore, the async/await syntax can be used with promises to write asynchronous code in a synchronous-like manner, further enhancing code readability and maintainability.
+### 6. What is the difference between Promise.all() and Promise.allSettled()? Give an example.
+#### Answer:
+
+
+
 
