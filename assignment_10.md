@@ -79,7 +79,85 @@ customPromise
 * Furthermore, the async/await syntax can be used with promises to write asynchronous code in a synchronous-like manner, further enhancing code readability and maintainability.
 ### 6. What is the difference between Promise.all() and Promise.allSettled()? Give an example.
 #### Answer:
+* Promise.all(): This method takes an array of promises as input and returns a new promise. The returned promise fulfills when all the input promises fulfill, or rejects as soon as any of the input promises reject. The fulfillment value is an array of the resolved values from the input promises, in the same order as the input.
+* The output is ['Promise 1', 'Promise 2', 'Promise 3']
+```
+const p1 = Promise.resolve('Promise 1');
+const p2 = Promise.resolve('Promise 2');
+const p3 = Promise.resolve('Promise 3');
 
+Promise.all([p1, p2, p3])
+  .then((values) => {
+    console.log(values); 
+  })
+  .catch((error) => {
+    console.error(error); // Not called in this example
+  });
+```
+* OUTPUT
+```
+['Promise 1', 'Promise 2', 'Promise 3']
+```
+* Promise.allSettled(): This method also takes an array of promises as input and returns a new promise. The returned promise fulfills with an array of objects representing the outcomes of the input promises, whether fulfilled or rejected. Each object contains a status property indicating either "fulfilled" or "rejected", and a value property holding the resolved value or a reason property holding the rejection reason.
+```
+const p1 = Promise.resolve('Promise 1');
+const p2 = Promise.reject(new Error('Error occurred'));
+const p3 = Promise.resolve('Promise 3');
+
+Promise.allSettled([p1, p2, p3])
+  .then((results) => {
+    console.log(results);
+  });
+```
+* OUTPUT
+```
+ [
+      { status: 'fulfilled', value: 'Promise 1' },
+      { status: 'rejected', reason: Error: Error occurred },
+      { status: 'fulfilled', value: 'Promise 3' }
+ ]
+```
+### 7. Write a JS function that throws a SyntaxError if the value age (passed as parameter of the function) is greater than 80. The error message will be “You are too old.”
+#### Answer:
+```
+function check_Age(age) {
+  if (age > 80) {
+    throw new SyntaxError('You are too old.');
+  }
+}
+
+try {
+  check_Age(90);
+} catch (error) {
+  console.error(error.message); 
+}
+```
+* The output is You are too old.
+### 8. For this code, answer the following:
+```
+const p1 = Promise.any([
+new Promise((resolve, reject) => setTimeout(() => reject(“Part 1 is
+rejected.”), 2000)),
+new Promise((resolve, reject) => setTimeout(() => resolve(“Part 2 is
+resolved.”), 5000)),
+]);
+p1.then((res) => console.log(res))
+```
+### a. Write the output of this code. Briefly explain the reasoning.
+#### Answer:
+* OUTPUT
+```
+Part 2 is resolved.
+```
+* The reason is that the "Part 2 is resolved." promise has a longer delay of 5000 milliseconds compared to the "Part 1 is rejected." promise's delay of 2000 milliseconds. Therefore, it will resolve first, and Promise.any() will fulfill with the resolved value.
+
+### b. What will be the output of this code if Promise.any() is replaced by Promise.race()? Is the output for this case generated faster or slower? Give reasons.
+#### Answer:
+* OUTPUT
+```
+Part 1 is rejected.
+```
+* The output in this case is determined by the behavior of the Promise.race() method. Promise.race() compares the execution time of the promises provided as arguments and returns the result of the fastest one. In the given code, the first promise, with a timeout of 2 seconds, is the fastest. As a result, the output "Part 1 is rejected." is generated after approximately 2 seconds, corresponding to the rejection of the first promise.
 
 
 
