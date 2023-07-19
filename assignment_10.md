@@ -158,6 +158,62 @@ Part 2 is resolved.
 Part 1 is rejected.
 ```
 * The output in this case is determined by the behavior of the Promise.race() method. Promise.race() compares the execution time of the promises provided as arguments and returns the result of the fastest one. In the given code, the first promise, with a timeout of 2 seconds, is the fastest. As a result, the output "Part 1 is rejected." is generated after approximately 2 seconds, corresponding to the rejection of the first promise.
+### 9. Given is a code snippet.
+```
+const p = new Promise((resolve, reject) => {
+resolve(“Part a”);
+resolve(“Part b”);
+})
+p.then((res)=>console.log(res));
+```
+### a. What will be the output of the above? Justify your answer.
+#### Answer:
+```
+Part a
+```
+* The reason is that when a promise is resolved with the resolve() function, it transitions to the fulfilled state and triggers the then() method callback. However, a promise can only be resolved once, and subsequent resolve() calls have no effect.
+* In the given code, a new promise p is created with the new Promise() constructor. Inside the promise executor function, two consecutive resolve() calls are made. However, only the first resolve() call is effective, resolving the promise with the value "Part a".
+* When the promise p is fulfilled, the then() method callback is triggered. It receives the resolved value as the res parameter. In this case, the console.log(res) statement inside the then() callback will log "Part a" to the console.
+* The second resolve() call, which resolves the promise with "Part b", is ignored since the promise was already resolved with "Part a". Therefore, "Part b" is not part of the output.
+
+### b. What code should we write to get both the resolved results.
+#### Answer:
+```
+const p = new Promise((resolve, reject) => {
+  const results = [];
+  results.push("Part a");
+  results.push("Part b");
+  resolve(results);
+});
+
+p.then((res) => {
+  console.log(res[0]); 
+  console.log(res[1]); 
+});
+```
+* OUTPUT
+```
+Part a
+Part b
+```
+### 10. Using async / await syntax, and fetch(), make an API request to ``` https://official-joke-api.appspot.com/random_joke ``` and console the results. Also handle errors if any.
+#### Answer:
+```
+async function fetchRandomJoke() {
+  try {
+    const response = await fetch('https://official-joke-api.appspot.com/random_joke');
+    if (!response.ok) {
+      throw new Error('Failed to fetch joke');
+    }
+    const jokeData = await response.json();
+    console.log('Random Joke:', jokeData);
+  } catch (error) {
+    console.error('Error:', error.message);
+  }
+}
+
+fetchRandomJoke();
+```
 
 
 
