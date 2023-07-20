@@ -1,5 +1,36 @@
 ### 1. Write a JavaScript program that adds a new item to the list whenever a user inputs a text into the input field and clicks the button.
 #### Answer:
+```
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Item to the List</title>
+</head>
+<body>
+  <input type="text" id="userInput" placeholder="Enter the item">
+  <button id="addItemButton">Add Item</button>
+  <ul id="itemList"></ul>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const userInput = document.getElementById('userInput');
+      const addItemButton = document.getElementById('addItemButton');
+      const itemList = document.getElementById('itemList');
+
+      addItemButton.addEventListener('click', function() {
+        const newItemText = userInput.value.trim();
+        if (newItemText !== '') {
+          const newItem = document.createElement('li');
+          newItem.textContent = newItemText;
+          itemList.appendChild(newItem);
+          userInput.value = '';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+```
 ### 2. Write a JS function to change the font size,bg-color, and font-family for the paragraph in the HTML snippet below on clicking the button.
 ```
 <!DOCTYPE html>
@@ -25,12 +56,91 @@ looking at its layout. </p>
 
 ### 4. Write a JavaScript program that displays an alert message to the user when they submit a form.
 #### Answer:
+```
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Alert Submission</title>
+</head>
+<body>
+  <form id="myForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
 
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <input type="submit" value="Submit">
+  </form>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const myForm = document.getElementById('myForm');
+
+      myForm.addEventListener('submit', function(event) {
+        event.preventDefault(); 
+        alert('Form has been successfully submitted!'); 
+      });
+    });
+  </script>
+</body>
+</html>
+```
 ### 5. Write a JavaScript program that displays an alert message to the user when they resize the browser window.
 #### Answer:
+```
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Resize Window Alert</title>
+</head>
+<body>
+
+  <script>
+    function showCustomAlert() {
+      alert('Browser window has been resized!');
+    }
+
+    window.addEventListener('resize', showCustomAlert);
+  </script>
+</body>
+</html>
+```
 
 ### 6. Write a JavaScript program that uses AJAX to fetch and display data from a text file when the user clicks on a button.
 #### Answer:
+```
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Text File Fetch using AJAX</title>
+</head>
+<body>
+  <button id="fetchDataButton">Fetch Data</button>
+  <div id="dataDisplay"></div>
+
+  <script>
+    document.getElementById('fetchDataButton').addEventListener('click', function() {
+      const xhttp = new XMLHttpRequest();
+
+      xhttp.onreadystatechange = function() {
+        if (xhttp.readyState === 4) {
+          if (xhttp.status === 200) {
+            const dataDisplay = document.getElementById('dataDisplay');
+            dataDisplay.textContent = xhttp.responseText;
+          } else {
+            alert('Failed to fetch data');
+          }
+        }
+      };
+
+      xhttp.open('GET', '1914016.pdf', true);
+      xhttp.send();
+    });
+  </script>
+</body>
+</html>
+```
 
 ### 7. Write a JavaScript program that uses AJAX to fetch and display an image from an API when the user clicks on a button.
 #### Answer:
