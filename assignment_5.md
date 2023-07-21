@@ -51,7 +51,38 @@ const multiplyByTwo = multiplier(2);
 console.log(multiplyByTwo(10));
 ```
 ### 5. Write a function named sortArray that takes in two parameters: 1. An array of numbers 2. A boolean value ascending that indicates whether the array should be sorted in ascending or descending order.The sortArray function should return the sorted array. Use an anonymous function to do the actual sorting, rather than using the built-in sort method.
+#### Answer:
+```
+function bubbleSortArray(arr, isAscending) {
+  const n = arr.length;
 
+  for (let i = 0; i < n - 1; i++) {
+    for (let j = 0; j < n - i - 1; j++) {
+      if (isAscending ? arr[j] > arr[j + 1] : arr[j] < arr[j + 1]) {
+        const temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+      }
+    }
+  }
+}
+
+function sortArray(numbers, ascending) {
+  // Cloning the array to avoid modifying the original array
+  const sortedNumbers = numbers.slice();
+
+  bubbleSortArray(sortedNumbers, ascending);
+
+  return sortedNumbers;
+}
+
+const numbersArray = [7, 2, 8, 1, 6, 4];
+const sortedAscending = sortArray(numbersArray, true);
+const sortedDescending = sortArray(numbersArray, false);
+
+console.log("Sorted in ascending order:", sortedAscending);
+console.log("Sorted in descending order:", sortedDescending);
+```
 
 
 
