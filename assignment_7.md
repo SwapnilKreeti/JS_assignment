@@ -53,6 +53,43 @@ looking at its layout. </p>
 
 ### 3. Write a JavaScript program that calculates the area of a rectangle when the user inputs the width and height into two input fields and clicks a button.
 #### Answer:
+```
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rectangle Area Calculator</title>
+</head>
+<body>
+  <h2>Rectangle Area Calculator</h2>
+  <label for="inputWidth">Width:</label>
+  <input type="number" id="inputWidth" placeholder="Enter width" required>
+  <br>
+  <label for="inputHeight">Height:</label>
+  <input type="number" id="inputHeight" placeholder="Enter height" required>
+  <br>
+  <button onclick="calculateArea()">Calculate Area</button>
+  <br>
+  <p id="outputResult"></p>
+
+  <script>
+    function calculateArea() {
+     
+      const width = parseFloat(document.getElementById("inputWidth").value);
+      const height = parseFloat(document.getElementById("inputHeight").value);
+
+      // Check if the input values are valid numbers
+      if (isNaN(width) || isNaN(height)) {
+        document.getElementById("outputResult").textContent = "Enter valid numbers for width and height.";
+      } else {
+     
+        const area = width * height;
+        document.getElementById("outputResult").textContent = `The area is: ${area}`;
+      }
+    }
+  </script>
+</body>
+</html>
+```
 
 ### 4. Write a JavaScript program that displays an alert message to the user when they submit a form.
 #### Answer:
