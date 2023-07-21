@@ -181,3 +181,45 @@ looking at its layout. </p>
 
 ### 7. Write a JavaScript program that uses AJAX to fetch and display an image from an API when the user clicks on a button.
 #### Answer:
+```
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Random Cat Image from an API</title>
+</head>
+<body>
+  <h2>Random Cat Image</h2>
+  <button id="fetchButton">Fetch Cat Image</button>
+  <br>
+  <img id="catImage" src="" alt="Random Cat Image">
+
+  <script>
+    function fetchCatImage() {
+      const apiUrl = "https://aws.random.cat/meow";
+      const catImageElement = document.getElementById("catImage");
+
+      const request = new XMLHttpRequest();
+
+      request.open("GET", apiUrl);
+
+      request.onload = function() {
+        if (request.status === 200) {
+       
+          const responseData = JSON.parse(request.responseText);
+
+          const catImageUrl = responseData.file;
+
+          catImageElement.src = catImageUrl;
+        } else {
+          console.error("Error fetching cat image:", request.status);
+        }
+      };
+
+      request.send();
+    }
+
+    document.getElementById("fetchButton").addEventListener("click", fetchCatImage);
+  </script>
+</body>
+</html>
+```
